@@ -1,0 +1,29 @@
+{
+    "name": "Content Extension",
+    "description": "This extention to show the content into the page",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+      },
+    "permissions": [
+      "tabs",
+      "storage",
+      "activeTab",
+      "scripting",
+      "input"
+    ],
+    "content_scripts":[
+        {
+            "matches":["https://www.linkedin.com/sales/search/company/*","https://www.linkedin.com/sales/search/people/*"],
+            "js":["contentScript.js"],
+            "css":["contentScript.css"]
+        }
+    ],
+    "host_permissions": [
+      "https://www.linkedin.com/sales/search/company*","https://www.linkedin.com/sales/search/people/*","http://localhost/*"
+    ],
+    "action": {
+      "default_popup": "content.html"
+    }
+  }
